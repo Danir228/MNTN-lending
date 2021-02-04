@@ -1,29 +1,36 @@
-// Scripts for larger monitor sizes
-    // Scroll down window
+    // Scroll down window.............................................................
+
+    function goBottom() {
+        var match = Math.ceil(window.pageYOffset + document.documentElement.clientHeight);
+
+        if (match != document.documentElement.scrollHeight) {
+            window.scrollBy(0, 15);
+            setTimeout(goBottom, 0);
+        }
+    }
+
     const scrollDownWindow = document.querySelector(".section_window_scroll-item");
 
-    scrollDownWindow.onclick = function() {
-        let i = 10;
-        let int = setInterval (function mobscrollDownHeight() {
-            window.scrollTo(0, i);
-            i += 10;
-            if (i >= 4600) clearInterval(int);
-        }, 3);
-    };
+    scrollDownWindow.addEventListener('click', goBottom);
 
-    // Scroll up window
+    // Scroll up window.........................................................................
+
+    function backToTop() {
+        if (window.pageYOffset > 0) {
+            window.scrollBy(0, -15);
+            setTimeout(backToTop, 0);
+        }
+    }
 
     const arrowTop = document.querySelector(".arrowTop");
 
-    arrowTop.onclick = function() {
-        window.scrollTo(pageXOffset, 0);
-        };
+    arrowTop.addEventListener('click', backToTop);
 
     window.addEventListener('scroll', function() {
-        arrowTop.hidden = (pageYOffset < document.documentElement.clientHeight);
+        arrowTop.hidden = (window.pageYOffset < document.documentElement.clientHeight);
     });
 
-    // Scroll to the anchor
+    // Scroll to the anchor........................................................................
 
     const anchors = [].slice.call(document.querySelectorAll('.scroll_menu a[href*="#"]')),
             animationTime = 400,
@@ -61,6 +68,22 @@
         });
     });
 
+    // Open Modal Window......................................................
+
+    var modal = document.querySelector("#modal"),
+        modalOverlay = document.querySelector("#modal-overlay"),
+        closeButton = document.querySelector("#close-button"),
+        openButton = document.querySelector("#open-button");
+
+    closeButton.addEventListener("click", function() {
+        modal.classList.toggle("closed");
+        modalOverlay.classList.toggle("closed");
+    });
+
+    openButton.addEventListener("click", function() {
+        modal.classList.toggle("closed");
+        modalOverlay.classList.toggle("closed");
+    });
 
 
 

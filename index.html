@@ -6,10 +6,7 @@
     <title>MNTN</title>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/script.js" defer></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet">
 </head>
 <body>
     <div class="wrap_all">
@@ -23,25 +20,25 @@
                         </button>
                         <div class="collapse navbar-collapse" id="collapsibleNavbar">
                           <ul class="navbar-nav w-100 d-flex justify-content-center">
-                            <li class="text-right">
+                            <li class="nav-li">
                               <a href="#">Equipment</a>
                             </li>
-                            <li class="text-right">
+                            <li class="nav-li">
                               <a href="#">About us</a>
                             </li>
-                            <li class="text-right">
+                            <li class="nav-li">
                               <a href="#">Blog</a>
                             </li>
                           </ul>
-                          <ul class="navbar-nav">
-                            <li class="account_user">
-                                <i class="fa fa-user"></i>
-                                <a href="#">Account</a>
-                            </li>
-                          </ul>
+                          <div class="dropdown-divider"></div>
+                          <div class="navbar-nav d-inline">
+                            <div class="account_user">
+                                <a href="#" id="open-button" class="open-button">Log in<i class="fas fa-arrow-alt-circle-right"></i></a>
+                            </div>
+                          </div>
                         </div>
                     </div>
-                  </nav>
+                </nav>
             </div>
         </header>
         <section class="section">
@@ -51,8 +48,8 @@
                             <div class="section_elements-1">
                                 <div class="section_social_links">
                                     <span class="scale">Folow us &rarr;</span>
-                                    <a href="https://www.instagram.com"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                                    <a href="https://twitter.coma  href="#""><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                    <a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a>
+                                    <a href="https://twitter.coma  href="#""><i class="fab fa-twitter"></i></a>
                                 </div>
                             </div>
                             <div class="section_elements-2 text-center">
@@ -79,7 +76,7 @@
         </section>
         <main>
             <div class="main_slide_all">
-                <div class="arrowTop scale" onclick="return up()" hidden>
+                <div class="arrowTop scale" hidden>
                     <div id="triangle-up"></div>
                 </div>
                 <div id="main-1" class="main_slide-1">
@@ -193,6 +190,38 @@
             </div>
         </footer>
     </div>
+    <!-- Modal window -->
+    <div class="modal-overlay closed" id="modal-overlay"></div>
+
+    <div class="modal closed" id="modal" aria-hidden="true" aria-labelledby="modalTitle" aria-describedby="modalDescription" role="dialog">
+        <button class="close-button" id="close-button" title="Закрыть модальное окно">Close</button>
+        <div class="modal_body">
+            <div class="user_name position_elements">
+                <label for="input">Name</label>
+                <input type="text"></input>
+            </div>
+            <div class="user_surname position_elements">
+                <label for="input">Surname</label>
+                <input type="text"></input>
+            </div>
+            <div class="user_mail position_elements">
+                <label for="input">Email</label>
+                <input type="text"></input>
+            </div>
+            <div class="user_password position_elements">
+                <label for="input">Password</label>
+                <input type="text"></input>
+            </div>
+        </div>
+        <div class="user_login">
+            <button class="login_button" id="login-button" title="Отправить данные">Sign Up</button>
+        </div>
+    </div>
+
+    <script src="js/script.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 </body>
 </html>
 

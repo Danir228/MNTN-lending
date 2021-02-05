@@ -316,7 +316,7 @@ a {
       transform: scale(.85);
     }
     50% {
-      transform: scale(1);
+      transform: scale(2);
     }
     100% {
       transform: scale(.85);

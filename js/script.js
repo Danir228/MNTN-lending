@@ -16,9 +16,24 @@
         down();
     }
 
-    const scrollDownWindow = document.querySelector('.section_window_scroll-item');
+    const scrollDownWindow =
+          document.querySelector ('.circular-arrow');
 
     scrollDownWindow.addEventListener('click', downWindow);
+
+    // Hidden Slide-Menu..........................................
+
+    const sectionElementsThree =
+          document.querySelector(".section_elements-3");
+
+    window.addEventListener('scroll', function() {
+        let scrollTop = document.documentElement.scrollTop;
+        let heightClient = document.documentElement.clientHeight;
+        let scrollheight = document.documentElement.scrollHeight;
+        sectionElementsThree.hidden = (
+            (scrollTop + heightClient) > (scrollheight - 200)
+        );
+    });
 
     // Scroll up window.........................................................................
 
@@ -53,22 +68,10 @@
         animationTime = 500,
         framesCount = 20;
 
-    function animationElementParent() {
-        anchors.forEach(item => {
-            item.classList.remove('show-btn');
-        });
-    }
-
     anchors.forEach(function(item) {
         item.addEventListener('click', function(e) {
             const target = e.target;
             e.preventDefault();
-
-            animationElementParent();
-
-            if(target == item) {
-                item.classList.add('show-btn');
-            }
 
             let coordY = document.querySelector(
                 item.getAttribute('href')).getBoundingClientRect().top +
@@ -117,31 +120,50 @@
     const slider_menu = [].slice.call(
         document.querySelectorAll('.section_slider-1'));
 
+    function getCoordTop(el) {
+        let coordY = el.getBoundingClientRect();
+        let top = Math.round(coordY.top);
+        return top;
+    }
+
+    function getCoordBottom(el) {
+        let coordY = el.getBoundingClientRect();
+        let bottom = Math.round(coordY.bottom);
+        return bottom;
+    }
+
     function addAnimate(index) {
         slider_menu.forEach(function(item, i){
             if(index == i) {
                 item.classList.add('show-btn');
+            } else {
+                item.classList.remove('show-btn');
             }
         });
     }
 
-    function removeAnimate() {
-        slider_menu.forEach(function(item) {
-            item.classList.remove('show-btn');
+    function removeAnimate(index) {
+        slider_menu.forEach(function(item, i){
+            if(index == i) {
+                item.classList.remove('show-btn');
+            }
         });
     }
 
-    animate_slide.forEach(function(item, i) {
-        let indexSlide = i;
-        item.addEventListener('mouseleave', () => {
-            removeAnimate();
-        });
-        item.addEventListener('mouseenter', () => {
-            addAnimate(indexSlide);
+    window.addEventListener('scroll', () => {
+        animate_slide.forEach(function(item, i) {
+            let t = getCoordTop(item);
+            let b = getCoordBottom(item);
+            if (t <= 300) {
+                item.style.opacity = '1';
+                addAnimate(i);
+            }
+            else if (b >= t) {
+                item.style.opacity = '0.5';
+                removeAnimate(i);
+            }
         });
     });
-
-
 
 
 

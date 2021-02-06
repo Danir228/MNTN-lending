@@ -154,9 +154,9 @@ a {
     flex-direction: column;
 }
 
-.section_social_links span {
+.section_social_links .puls {
     margin-left: -5px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     margin-top: 10px;
     -webkit-writing-mode: vertical-rl;
     writing-mode:tb-rl;
@@ -166,6 +166,18 @@ a {
     .section_social_links span {
         margin-top: 10px;
     }
+}
+
+.puls {
+    animation: pulsate 1.2s linear infinite;
+}
+
+@-webkit-keyframes pulsate {
+    50% { color: #fff; text-shadow: 0 -1px rgba(0,0,0,.3), 0 0 5px #ffd, 0 0 8px #fff; }
+   }
+
+@keyframes pulsate {
+50% { color: #fff; text-shadow: 0 -1px rgba(0,0,0,.3), 0 0 5px #ffd, 0 0 8px #fff; }
 }
 
 .section_elements-2 {
@@ -323,6 +335,41 @@ a {
     }
   }
 
+.section_elements  .circular-arrow {
+    width: 58px;
+    height: 58px;
+    border: 2px solid #0c71c7;
+    border-radius: 100%;
+    position: relative;
+    animation: down 1.5s infinite;
+    margin: 100px auto 42px auto;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    cursor: pointer;
+  }
+.section_elements .circular-arrow::before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 18px;
+    width: 18px;
+    height: 18px;
+    border-left: 2px solid #1062a9;
+    border-bottom: 2px solid #1062a9;
+    transform: rotate(-45deg);
+  }
+  @keyframes down {
+    0% {
+    transform: translate(0);
+    }
+    20% {
+    transform: translateY(15px);
+    }
+    40% {
+    transform: translate(0);
+    }
+  }
+
 /* Styles for Main slides..................................................... */
 
 .main_slide_all {
@@ -341,16 +388,33 @@ a {
     }
 }
 
-.main_slide_all .arrowTop {
-    height: 54px;
-    width: 26px;
-    left: 10px;
-    border: 1px solid;
-    background-color: #FFFFFF;
+.arrowTop {
+    width: 45px;
+    height: 35px;
+    background-color:rgba(17, 53, 160, 0.808);
+    margin-left: 15px;
+    padding: 15px 5px 5px 17px;
     position: fixed;
-    z-index: 2;
     bottom: 300px;
+    border-radius: 5px;
     cursor: pointer;
+    z-index: 3000;
+}
+
+.arrowTop:hover {
+    background-color:rgb(17, 53, 160);
+}
+
+.arrow {
+    width: 10px;
+    height: 10px;
+    border-top: 3px solid #ffffff;
+    border-right: 3px solid #ffffff;
+    position: relative;
+}
+
+.arrow-top {
+    transform: rotate(-45deg);
 }
 
 .main_slide_all .main_slide-1 {

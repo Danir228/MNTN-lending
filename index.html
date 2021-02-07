@@ -12,9 +12,9 @@
     <div class="wrap_all">
         <header>
             <div class="header_elements">
-                <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+                <nav class="navbar navbar-expand-md navbar-dark">
                     <div class="container">
-                        <a class="navbar-brand scale" href="#">MNTN</a>
+                        <a class="navbar-brand puls" href="#">MNTN</a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                           <span class="navbar-toggler-icon"></span>
                         </button>
@@ -33,7 +33,7 @@
                           <div class="dropdown-divider"></div>
                           <div class="navbar-nav d-inline">
                             <div class="account_user">
-                                <a href="#" id="open-button" class="open-button">Sign Up<i class="fas fa-arrow-alt-circle-right"></i></a>
+                                <a href="#" id="open-button" class="open-button">Log In<i class="fas fa-arrow-alt-circle-right"></i></a>
                             </div>
                           </div>
                         </div>
@@ -195,30 +195,59 @@
         </footer>
     </div>
     <!-- Modal window -->
-    <div class="modal-overlay closed" id="modal-overlay"></div>
 
-    <div class="modal closed" id="modal" aria-hidden="true" aria-labelledby="modalTitle" aria-describedby="modalDescription" role="dialog">
-        <button class="close-button" id="close-button" title="Закрыть модальное окно">Close</button>
-        <div class="modal_body">
-            <div class="user_name position_elements">
-                <label for="input">Name</label>
-                <input type="text"></input>
+    <div class="modals">
+        <div class="modal-overlay closed" id="modal-overlay"></div>
+
+        <div class="modal closed" id="modal" aria-hidden="true" aria-labelledby="modalTitle" aria-describedby="modalDescription" role="dialog">
+            <div class="modal-header">
+                <div class="modals-references d-flex">
+                    <div class="login-block bgdiv" id="login-block">Log In</div>
+                    <div class="signup-block" id="signup-block">Sign Up</div>
+                </div>
+                <div class="modals-close-btn">
+                    <button type="button" class="close" id="close-button"  data-dismiss="modal" title="Закрыть">&times;</button>
+                </div>
             </div>
-            <div class="user_surname position_elements">
-                <label for="input">Surname</label>
-                <input type="text"></input>
+            <div class="login-block_content" id="login-block_content">
+                <div class="login-modal_body">
+                    <div class="user_mail position_elements">
+                        <label for="input">Email</label>
+                        <input type="text"></input>
+                    </div>
+                    <div class="user_password position_elements">
+                        <label for="input">Password</label>
+                        <input type="text"></input>
+                    </div>
+                </div>
+                <div class="login-modal_btn">
+                    <button class="login_button" id="login-button" title="Отправить данные">Log In <i class="fas fa-arrow-alt-circle-right"></i></button>
+                </div>
             </div>
-            <div class="user_mail position_elements">
-                <label for="input">Email</label>
-                <input type="text"></input>
+
+            <div class="signup-block_content closed" id="signup-block_content">
+                <div class="signup-modal_body">
+                    <div class="user_name position_elements">
+                        <label for="input">Name</label>
+                        <input type="text"></input>
+                    </div>
+                    <div class="user_surname position_elements">
+                        <label for="input">Surname</label>
+                        <input type="text"></input>
+                    </div>
+                    <div class="user_mail position_elements">
+                        <label for="input">Email</label>
+                        <input type="text"></input>
+                    </div>
+                    <div class="user_password position_elements">
+                        <label for="input">Password</label>
+                        <input type="text"></input>
+                    </div>
+                </div>
+                <div class="signup-modal_btn">
+                    <button class="signup_button" id="signup-button" title="Отправить данные">Sign Up <i class="fas fa-arrow-alt-circle-right"></i></button>
+                </div>
             </div>
-            <div class="user_password position_elements">
-                <label for="input">Password</label>
-                <input type="text"></input>
-            </div>
-        </div>
-        <div class="user_login">
-            <button class="login_button" id="login-button" title="Отправить данные">Sign Up</button>
         </div>
     </div>
 

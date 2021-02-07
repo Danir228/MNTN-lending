@@ -1,23 +1,27 @@
     // Scroll down window.............................................................
+
     function downWindow() {
         let scrollheight = document.documentElement.scrollHeight;
-        let heightClient = document.documentElement.clientHeight;
+        let clientHeight = document.documentElement.clientHeight;
         let u;
 
         function down() {
             let scrollTop = document.documentElement.scrollTop;
-            if((scrollTop + heightClient) < (scrollheight - 1)) {
-                window.scrollBy (0, 100);
+            if (
+                (scrollTop + clientHeight) < (scrollheight - 1)
+            ) {
+                window.scrollBy(0, 100);
                 u = setTimeout(down, 10);
             } else {
                 clearTimeout(u);
             }
         }
+
         down();
     }
 
     const scrollDownWindow =
-          document.querySelector ('.circular-arrow');
+          document.querySelector('.circular-arrow');
 
     scrollDownWindow.addEventListener('click', downWindow);
 
@@ -28,21 +32,22 @@
 
     window.addEventListener('scroll', function() {
         let scrollTop = document.documentElement.scrollTop;
-        let heightClient = document.documentElement.clientHeight;
-        let scrollheight = document.documentElement.scrollHeight;
+        let clientHeight = document.documentElement.clientHeight;
+        let scrollHeight = document.documentElement.scrollHeight;
+
         sectionElementsThree.hidden = (
-            (scrollTop + heightClient) > (scrollheight - 200)
+            (scrollTop + clientHeight) > (scrollHeight - 200)
         );
     });
 
     // Scroll up window.........................................................................
 
-    let t;
-
     function up() {
+        let t;
         let top = Math.max(
             document.body.scrollTop,
             document.documentElement.scrollTop);
+
         if(top > 0) {
             window.scrollBy(0,((top+150)/-10));
             t = setTimeout(up,20);
@@ -70,7 +75,6 @@
 
     anchors.forEach(function(item) {
         item.addEventListener('click', function(e) {
-            const target = e.target;
             e.preventDefault();
 
             let coordY = document.querySelector(
@@ -100,7 +104,11 @@
     var modal = document.querySelector("#modal"),
         modalOverlay = document.querySelector("#modal-overlay"),
         closeButton = document.querySelector("#close-button"),
-        openButton = document.querySelector("#open-button");
+        openButton = document.querySelector("#open-button"),
+        loginBlock = document.querySelector("#login-block"),
+        signupBlock = document.querySelector("#signup-block"),
+        loginBlockContent = document.querySelector("#login-block_content"),
+        signupBlockContent = document.querySelector("#signup-block_content");
 
     closeButton.addEventListener("click", function() {
         modal.classList.toggle("closed");
@@ -110,6 +118,20 @@
     openButton.addEventListener("click", function() {
         modal.classList.toggle("closed");
         modalOverlay.classList.toggle("closed");
+    });
+
+    loginBlock.addEventListener("click", function() {
+        loginBlockContent.classList.remove("closed");
+        signupBlockContent.classList.add("closed");
+        signupBlock.classList.remove("bgdiv");
+        loginBlock.classList.add("bgdiv");
+    });
+
+    signupBlock.addEventListener("click", function() {
+        loginBlockContent.classList.add("closed");
+        signupBlockContent.classList.remove("closed");
+        signupBlock.classList.add("bgdiv");
+        loginBlock.classList.remove("bgdiv");
     });
 
     // Animation for Slider-Menu..............................
@@ -123,17 +145,19 @@
     function getCoordTop(el) {
         let coordY = el.getBoundingClientRect();
         let top = Math.round(coordY.top);
+
         return top;
     }
 
     function getCoordBottom(el) {
         let coordY = el.getBoundingClientRect();
         let bottom = Math.round(coordY.bottom);
+
         return bottom;
     }
 
     function addAnimate(index) {
-        slider_menu.forEach(function(item, i){
+        slider_menu.forEach(function(item, i) {
             if(index == i) {
                 item.classList.add('show-btn');
             } else {
@@ -143,7 +167,7 @@
     }
 
     function removeAnimate(index) {
-        slider_menu.forEach(function(item, i){
+        slider_menu.forEach(function(item, i) {
             if(index == i) {
                 item.classList.remove('show-btn');
             }

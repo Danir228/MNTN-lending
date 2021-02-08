@@ -16,26 +16,26 @@
                     <div class="container">
                         <a class="navbar-brand puls" href="#">MNTN</a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-                          <span class="navbar-toggler-icon"></span>
+                            <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                          <ul class="navbar-nav w-100 d-flex justify-content-center">
-                            <li class="nav-li">
-                              <a href="#">Equipment</a>
-                            </li>
-                            <li class="nav-li">
-                              <a href="#">About us</a>
-                            </li>
-                            <li class="nav-li">
-                              <a href="#">Blog</a>
-                            </li>
-                          </ul>
+                            <ul class="navbar-nav w-100 d-flex justify-content-center">
+                                <li class="nav-li">
+                                    <a href="#">Equipment</a>
+                                </li>
+                                <li class="nav-li">
+                                    <a href="#">About us</a>
+                                </li>
+                                <li class="nav-li">
+                                    <a href="#">Blog</a>
+                                </li>
+                            </ul>
                           <div class="dropdown-divider"></div>
-                          <div class="navbar-nav d-inline">
-                            <div class="account_user">
-                                <a href="#" id="open-button" class="open-button">Log In<i class="fas fa-arrow-alt-circle-right"></i></a>
+                            <div class="navbar-nav">
+                                <div class="account_user">
+                                    <a href="#" id="open-button" class="open-button">Log In<i class="fas fa-sign-in-alt"></i></a>
+                                </div>
                             </div>
-                          </div>
                         </div>
                     </div>
                 </nav>
@@ -202,8 +202,8 @@
         <div class="modal closed" id="modal" aria-hidden="true" aria-labelledby="modalTitle" aria-describedby="modalDescription" role="dialog">
             <div class="modal-header">
                 <div class="modals-references d-flex">
-                    <div class="login-block bgdiv" id="login-block">Log In</div>
-                    <div class="signup-block" id="signup-block">Sign Up</div>
+                    <div class="login-block bgdiv" id="login-block"><i class="fas fa-sign-in-alt"></i> Log In</div>
+                    <div class="signup-block" id="signup-block"><i class="fas fa-user-plus"></i> Sign Up</div>
                 </div>
                 <div class="modals-close-btn">
                     <button type="button" class="close" id="close-button"  data-dismiss="modal" title="Закрыть">&times;</button>
@@ -213,39 +213,42 @@
                 <div class="login-modal_body">
                     <div class="user_mail position_elements">
                         <label for="input">Email</label>
-                        <input type="text"></input>
+                        <input class="login_email" type="text"></input>
                     </div>
                     <div class="user_password position_elements">
                         <label for="input">Password</label>
-                        <input type="text"></input>
+                        <input class="login_password" type="text"></input>
                     </div>
                 </div>
                 <div class="login-modal_btn">
-                    <button class="login_button" id="login-button" title="Отправить данные">Log In <i class="fas fa-arrow-alt-circle-right"></i></button>
+                    <button class="login_button" id="login-button" title="Отправить данные">Submit</button>
                 </div>
             </div>
 
             <div class="signup-block_content closed" id="signup-block_content">
                 <div class="signup-modal_body">
                     <div class="user_name position_elements">
-                        <label for="input">Name</label>
-                        <input type="text"></input>
+                        <span>Name</span>
+                        <input class="name" type="text"></input>
                     </div>
                     <div class="user_surname position_elements">
-                        <label for="input">Surname</label>
-                        <input type="text"></input>
+                        <span>Surname</span>
+                        <input class="surname" type="text"></input>
                     </div>
                     <div class="user_mail position_elements">
-                        <label for="input">Email</label>
-                        <input type="text"></input>
+                        <span>Email</span>
+                        <input class="signup_email" type="text"></input>
                     </div>
                     <div class="user_password position_elements">
-                        <label for="input">Password</label>
-                        <input type="text"></input>
+                        <span>Password</span>
+                        <input class="signup_password" type="text"></input>
+                        <label for="input">Пароль должен быть не менее 8 символов</label>
+                        <label for="input">Пароль должен содержать хотя бы одну букву</label>
+                        <label for="input">Пароль должен содержать хотя бы одну цифру</label>
                     </div>
                 </div>
                 <div class="signup-modal_btn">
-                    <button class="signup_button" id="signup-button" title="Отправить данные">Sign Up <i class="fas fa-arrow-alt-circle-right"></i></button>
+                    <button class="signup_button" id="signup-button" title="Отправить данные">Sign Up</button>
                 </div>
             </div>
         </div>

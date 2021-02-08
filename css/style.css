@@ -28,6 +28,10 @@ body {
     background-color: #1e3f50;
 }
 
+input {
+    outline:none;
+}
+
 a {
     font-family: 'Gilroy';
     font-size: 18px;
@@ -58,6 +62,15 @@ a {
     z-index: 1500;
 }
 
+.header_elements a {
+    opacity: 0.7;
+}
+
+.header_elements a:hover {
+    color: #ffffff;
+    opacity: 1;
+}
+
 .header_elements .navbar {
     background-color: #354147;
 }
@@ -76,11 +89,7 @@ a {
 }
 
 .header_elements .account_user {
-    width: 100px;
-}
-
-.header_elements #collapsibleNavbar {
-    padding-top: 10px;
+    width: 80px;
 }
 
 .header_elements #collapsibleNavbar ul li {
@@ -88,6 +97,7 @@ a {
 }
 
 .header_elements a {
+    font-family: Chronicle Display;
     text-transform: uppercase;
 }
 
@@ -231,7 +241,7 @@ a {
     background: rgb(251, 215, 132);
 }
 
-@media (min-width: 600px) and (max-width: 750px) {
+@media (max-width: 750px) {
     .section_elements .section_elements-2 .section_reactangle {
         margin-top: 28px;
     }
@@ -241,7 +251,7 @@ a {
     .section_elements .section_elements-2 .section_reactangle {
         max-width: 6%;
         margin-right: 12px;
-        margin-top: 18px;
+        margin-top: 17px;
     }
 }
 
@@ -255,7 +265,7 @@ a {
 }
 
 @media (max-width: 600px) {
-    .section_elements-2 .section_text-1_text span {
+    .section_elements .section_elements-2 .section_text-1_text span {
         font-weight: 800;
         font-size: 10px;
         letter-spacing: 2px;
@@ -624,27 +634,46 @@ a {
 /* Styles for Open Modal Window.................................................... */
 
 .modals .modal {
-    font-family: Chronicle Display;
-    font-weight: 500;
-    font-size: 18px;
-}
-
-.modals .modal {
     display: block;
 
     width: 100%;
-    max-width: 300px;
+    max-width: 340px;
     height: 100%;
-    max-height: 400px;
+    max-height: 384px;
     position: fixed;
     z-index: 2100;
 
     left: 50%;
     top: 50%;
 
+    font-family: Chronicle Display;
+    font-weight: 300;
+    font-size: 14px;
+
     transform: translate(-50%, -50%);
     background: rgba(124, 127, 136, 0.808);
     box-shadow: 0 0 60px 10px rgba(0, 0, 0, 0.9);
+}
+
+.modals .modal label {
+    color: rgba(0, 0, 0, 0.9);
+}
+
+.modals .modal .modal-header {
+    border-bottom: none;
+    height: 100%;
+    max-height: 36px;
+}
+
+.modals .modal .modal-header .close {
+    padding: 7px 11px;
+}
+
+.modals .modal .login-block_content, .modals .modal .signup-block_content {
+    background-color: rgba(200, 204, 214, 0.808);
+    height: 100%;
+    max-height: 343px;
+    margin: 0 5px 5px 5px;
 }
 
 .modals .closed {
@@ -694,28 +723,24 @@ a {
 
 .modals .modal .modal-header .modals-references .login-block {
     position: absolute;
-    height: 56px;
-    width: 100px;
-    left: 0;
-    top: 0;
-    padding-top: 15px;
+    height: 31px;
+    width: 150px;
+    left: 5px;
+    top: 5px;
+    padding-top: 5px;
     cursor: pointer;
     text-align: center;
-
-    opacity: 0.7;
 }
 
 .modals .modal .modal-header .modals-references .signup-block {
     position: absolute;
-    height: 56px;
-    width: 100px;
-    top: 0;
-    padding-top: 15px;
-    margin-left: 85px;
+    height: 31px;
+    width: 150px;
+    top: 5px;
+    padding-top: 5px;
+    margin-left: 139px;
     cursor: pointer;
     text-align: center;
-
-    opacity: 0.7;
 }
 
 .bgdiv {
@@ -737,7 +762,19 @@ a {
 
 .modals .modal input {
     width: 100%;
-    max-width: 250px;
+    max-width: 280px;
+}
+
+.modals .modal .email_block input {
+    margin-right: 5px;
+}
+
+.modals .modal .email_block i {
+    color: rgb(0, 128, 0);
+}
+
+.invalid_mail {
+    border-color: rgb(255, 0, 0);
 }
 
 .modals .modal .login-modal_btn {
@@ -748,7 +785,7 @@ a {
 
 .modals .modal .login-modal_btn .login_button {
     width: 100%;
-    max-width: 150px;
+    max-width: 280px;
 
     background: #354147;
     color: #ffffff;
@@ -762,22 +799,27 @@ a {
     margin-top: 5px;
 }
 
+.modals .signup-modal_body span {
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.9);
+}
+
 .modals .signup-modal_body label {
-    font-family: Chronicle Display;
     font-size: 12px;
     color: #ffffff;
+    margin-bottom: 0;
 }
 
 .modals .modal .signup-modal_btn .signup_button {
     width: 100%;
-    max-width: 150px;
+    max-width: 280px;
 
     background: #354147;
     color: #ffffff;
 }
 
 .modals .modal .signup-modal_btn .signup_button:hover {
-    background: rgb(0, 0, 255);
+    background-color:rgba(200, 204, 214, 0.808);
 }
 
 .modals .modal .signup-modal-btn .signup_button i {

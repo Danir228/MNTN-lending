@@ -101,14 +101,18 @@
 
     // Open Modal Window......................................................
 
-    var modal = document.querySelector("#modal"),
+    let modal = document.querySelector("#modal"),
         modalOverlay = document.querySelector("#modal-overlay"),
         closeButton = document.querySelector("#close-button"),
         openButton = document.querySelector("#open-button"),
         loginBlock = document.querySelector("#login-block"),
         signupBlock = document.querySelector("#signup-block"),
         loginBlockContent = document.querySelector("#login-block_content"),
-        signupBlockContent = document.querySelector("#signup-block_content");
+        signupBlockContent = document.querySelector("#signup-block_content"),
+        loginEmail = document.querySelector('.login_email'),
+        signupEmail = document.querySelector('.signup_email'),
+        loginPassword = document.querySelector('.login_password'),
+        signupPassword = document.querySelector('.signup_password');
 
     closeButton.addEventListener("click", function() {
         modal.classList.toggle("closed");
@@ -133,6 +137,44 @@
         signupBlock.classList.add("bgdiv");
         loginBlock.classList.remove("bgdiv");
     });
+
+    function validMail() {
+        let regular  = /^[\w-\.]+@[\w-]+\.[a-z]{2,4}$/i;
+        let myMail = signupEmail.value;
+        let valid = regular.test(myMail);
+        let noValue = '';
+        if (valid || myMail == noValue) {
+            signupEmail.classList.remove('invalid_mail');
+        } else {
+            signupEmail.classList.add('invalid_mail');
+        }
+    }
+
+    signupEmail.addEventListener('input', validMail);
+
+    function validatePassword() {
+        let myPassword = signupPassword.value;
+        let noValue = '';
+
+        if (
+            myPassword.length < 8 ||
+            myPassword.search(/[a-z]/i) < 0 ||
+            myPassword.search(/[0-9]/) < 0
+        ) {
+            signupPassword.classList.add('invalid_mail');
+        }
+
+        if (
+            myPassword.length >= 8 &&
+            myPassword.search(/[a-z]/i) > 0 ||
+            myPassword.search(/[0-9]/) > 0 ||
+            myPassword == noValue
+        ) {
+            signupPassword.classList.remove('invalid_mail');
+        }
+    }
+
+    signupPassword.addEventListener('input', validatePassword);
 
     // Animation for Slider-Menu..............................
 

@@ -101,80 +101,119 @@
 
     // Open Modal Window......................................................
 
-    let modal = document.querySelector("#modal"),
-        modalOverlay = document.querySelector("#modal-overlay"),
-        closeButton = document.querySelector("#close-button"),
-        openButton = document.querySelector("#open-button"),
-        loginBlock = document.querySelector("#login-block"),
-        signupBlock = document.querySelector("#signup-block"),
-        loginBlockContent = document.querySelector("#login-block_content"),
-        signupBlockContent = document.querySelector("#signup-block_content"),
-        loginEmail = document.querySelector('.login_email'),
-        signupEmail = document.querySelector('.signup_email'),
-        loginPassword = document.querySelector('.login_password'),
-        signupPassword = document.querySelector('.signup_password');
+    const modal = document.querySelector("#modal"),
+          modalOverlay = document.querySelector("#modal-overlay"),
+          closeButton = document.querySelector("#close-button"),
+          openButton = document.querySelector("#open-button"),
+          loginBlock = document.querySelector("#login-block"),
+          signupBlock = document.querySelector("#signup-block"),
+          loginBlockContent = document.querySelector("#login-block_content"),
+          signupBlockContent = document.querySelector("#signup-block_content"),
+          loginEmail = document.querySelector('.login_email'),
+          signupEmail = document.querySelector('.signup_email'),
+          loginPassword = document.querySelector('.login_password'),
+          signupPassword = document.querySelector('.signup_password'),
+          userName = document.querySelector('.name'),
+          userSurName = document.querySelector('.surname'),
+          loginPasswordHidden =
+                    document.querySelector('.login_password_hidden'),
+          loginPasswordVisible =
+                    document.querySelector('.login_password_visible'),
+          signupPasswordHidden =
+                    document.querySelector('.signup_password_hidden'),
+          signupPasswordVisible =
+                    document.querySelector('.signup_password_visible');
 
-    closeButton.addEventListener("click", function() {
-        modal.classList.toggle("closed");
-        modalOverlay.classList.toggle("closed");
-    });
+        //   Buttons for Open and Closed modal window...........................
 
-    openButton.addEventListener("click", function() {
-        modal.classList.toggle("closed");
-        modalOverlay.classList.toggle("closed");
-    });
+        closeButton.addEventListener("click", function() {
+            modal.classList.toggle("closed");
+            modalOverlay.classList.toggle("closed");
+        });
 
-    loginBlock.addEventListener("click", function() {
-        loginBlockContent.classList.remove("closed");
-        signupBlockContent.classList.add("closed");
-        signupBlock.classList.remove("bgdiv");
-        loginBlock.classList.add("bgdiv");
-    });
+        openButton.addEventListener("click", function() {
+            modal.classList.toggle("closed");
+            modalOverlay.classList.toggle("closed");
+        });
 
-    signupBlock.addEventListener("click", function() {
-        loginBlockContent.classList.add("closed");
-        signupBlockContent.classList.remove("closed");
-        signupBlock.classList.add("bgdiv");
-        loginBlock.classList.remove("bgdiv");
-    });
+        loginBlock.addEventListener("click", function() {
+            loginBlockContent.classList.remove("closed");
+            signupBlockContent.classList.add("closed");
+            signupBlock.classList.remove("bgdiv");
+            loginBlock.classList.add("bgdiv");
+        });
 
-    function validMail() {
-        let regular  = /^[\w-\.]+@[\w-]+\.[a-z]{2,4}$/i;
-        let myMail = signupEmail.value;
-        let valid = regular.test(myMail);
-        let noValue = '';
-        if (valid || myMail == noValue) {
-            signupEmail.classList.remove('invalid_mail');
-        } else {
-            signupEmail.classList.add('invalid_mail');
+        signupBlock.addEventListener("click", function() {
+            loginBlockContent.classList.add("closed");
+            signupBlockContent.classList.remove("closed");
+            signupBlock.classList.add("bgdiv");
+            loginBlock.classList.remove("bgdiv");
+        });
+
+        // Validate Mail and Password .............................
+
+        function validMail(elem) {
+            let regular  = /^[\w-\.]+@[\w-]+\.[a-z]{2,4}$/i;
+            let myMail = elem.value;
+            let valid = regular.test(myMail);
+            let noValue = '';
+            if (valid || myMail == noValue) {
+                elem.classList.remove('invalid_mail');
+            } else {
+                elem.classList.add('invalid_mail');
+            }
         }
-    }
 
-    signupEmail.addEventListener('input', validMail);
+        signupEmail.addEventListener('input', () => {
+            validMail(signupEmail);
+        });
 
-    function validatePassword() {
-        let myPassword = signupPassword.value;
-        let noValue = '';
+        loginEmail.addEventListener('input', () => {
+            validMail(loginEmail);
+        });
 
-        if (
-            myPassword.length < 8 ||
-            myPassword.search(/[a-z]/i) < 0 ||
-            myPassword.search(/[0-9]/) < 0
-        ) {
-            signupPassword.classList.add('invalid_mail');
+        function validPassword() {
+            let myPassword = signupPassword.value;
+
+            if (myPassword.length < 8 ) {
+                signupPassword.classList.add('invalid_mail');
+            } else if (myPassword.search(/[a-z]/i) < 0) {
+                signupPassword.classList.add('invalid_mail');
+            } else if (myPassword.search(/[0-9]/) < 0) {
+                signupPassword.classList.add('invalid_mail');
+            } else {
+                signupPassword.classList.remove('invalid_mail');
+            }
+
         }
 
-        if (
-            myPassword.length >= 8 &&
-            myPassword.search(/[a-z]/i) > 0 ||
-            myPassword.search(/[0-9]/) > 0 ||
-            myPassword == noValue
-        ) {
-            signupPassword.classList.remove('invalid_mail');
-        }
-    }
+        signupPassword.addEventListener('input', validPassword);
 
-    signupPassword.addEventListener('input', validatePassword);
+        // Hidden and visible password...........................
+
+        loginPasswordHidden.addEventListener('click', function() {
+            loginPasswordHidden.classList.add('closed');
+            loginPasswordVisible.classList.remove('closed');
+            loginPassword.setAttribute("type", "text");
+        });
+
+        loginPasswordVisible.addEventListener('click', function() {
+            loginPasswordVisible.classList.add('closed');
+            loginPasswordHidden.classList.remove('closed');
+            loginPassword.setAttribute("type", "password");
+        });
+
+        signupPasswordHidden.addEventListener('click', function() {
+            signupPasswordHidden.classList.add('closed');
+            signupPasswordVisible.classList.remove('closed');
+            signupPassword.setAttribute("type", "text");
+        });
+
+        signupPasswordVisible.addEventListener('click', function() {
+            signupPasswordVisible.classList.add('closed');
+            signupPasswordHidden.classList.remove('closed');
+            signupPassword.setAttribute("type", "password");
+        });
 
     // Animation for Slider-Menu..............................
 
@@ -230,6 +269,8 @@
             }
         });
     });
+
+
 
 
 
